@@ -1,39 +1,40 @@
-var NUMBER_DAN = 19;
-var RANDOM_NUM1 = Math.ceil(Math.random() * NUMBER_DAN);
-var RANDOM_NUM2 = Math.ceil(Math.random() * NUMBER_DAN);
-var firstNum = RANDOM_NUM1;
-var secondNum = RANDOM_NUM2;
-var result = firstNum * secondNum;
-var word = document.createElement("div");
-word.textContent = firstNum + " \uACF1\uD558\uAE30 " + secondNum + " \uB294?";
-document.body.append(word);
-var form = document.createElement("form");
-document.body.append(form);
-var label = document.createElement("label");
-label.textContent = "정답 : ";
-form.appendChild(label);
-var input = document.createElement("input");
-input.type = "number";
-form.appendChild(input);
-var button = document.createElement("button");
-button.textContent = "입력";
-form.appendChild(button);
-var resultDiv = document.createElement("div");
+"use strict";
+const NUMBER_DAN = 19;
+const RANDOM_NUM1 = Math.ceil(Math.random() * NUMBER_DAN);
+const RANDOM_NUM2 = Math.ceil(Math.random() * NUMBER_DAN);
+let firstNum = RANDOM_NUM1;
+let secondNum = RANDOM_NUM2;
+let guguResult = firstNum * secondNum;
+const guguWord = document.createElement("div");
+guguWord.textContent = `${firstNum} 곱하기 ${secondNum} 는?`;
+document.body.append(guguWord);
+const guguForm = document.createElement("form");
+document.body.append(guguForm);
+const guguLabel = document.createElement("label");
+guguLabel.textContent = "정답 : ";
+guguForm.appendChild(guguLabel);
+const guguInput = document.createElement("input");
+guguInput.type = "number";
+guguForm.appendChild(guguInput);
+const guguButton = document.createElement("button");
+guguButton.textContent = "입력";
+guguForm.appendChild(guguButton);
+const resultDiv = document.createElement("div");
 document.body.append(resultDiv);
-form.addEventListener("submit", function (e) {
+guguForm.addEventListener("submit", e => {
     e.preventDefault();
-    if (result === Number(input.value)) {
+    if (guguResult === Number(guguInput.value)) {
         resultDiv.textContent = "정답!";
         firstNum = RANDOM_NUM1;
         secondNum = RANDOM_NUM2;
-        result = firstNum * secondNum;
-        word.textContent = firstNum + " \uACF1\uD558\uAE30 " + secondNum + " \uB294?";
-        input.value = "";
-        input.focus();
+        guguResult = firstNum * secondNum;
+        guguWord.textContent = `${firstNum} 곱하기 ${secondNum} 는?`;
+        guguInput.value = "";
+        guguInput.focus();
     }
     else {
         resultDiv.textContent = "땡!";
-        input.value = "";
-        input.focus();
+        guguInput.value = "";
+        guguInput.focus();
     }
 });

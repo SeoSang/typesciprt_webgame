@@ -4,43 +4,42 @@ const RANDOM_NUM2 = Math.ceil(Math.random() * NUMBER_DAN)
 
 let firstNum = RANDOM_NUM1
 let secondNum = RANDOM_NUM2
-let result = firstNum * secondNum
+let guguResult = firstNum * secondNum
+const guguWord = document.createElement("div")
+guguWord.textContent = `${firstNum} 곱하기 ${secondNum} 는?`
+document.body.append(guguWord)
 
-const word = document.createElement("div")
-word.textContent = `${firstNum} 곱하기 ${secondNum} 는?`
-document.body.append(word)
+const guguForm = document.createElement("form")
+document.body.append(guguForm)
 
-const form = document.createElement("form")
-document.body.append(form)
+const guguLabel = document.createElement("label")
+guguLabel.textContent = "정답 : "
+guguForm.appendChild(guguLabel)
 
-const label = document.createElement("label")
-label.textContent = "정답 : "
-form.appendChild(label)
+const guguInput = document.createElement("input")
+guguInput.type = "number"
+guguForm.appendChild(guguInput)
 
-const input = document.createElement("input")
-input.type = "number"
-form.appendChild(input)
-
-const button = document.createElement("button")
-button.textContent = "입력"
-form.appendChild(button)
+const guguButton = document.createElement("button")
+guguButton.textContent = "입력"
+guguForm.appendChild(guguButton)
 
 const resultDiv = document.createElement("div")
 document.body.append(resultDiv)
 
-form.addEventListener("submit", e => {
+guguForm.addEventListener("submit", e => {
   e.preventDefault()
-  if (result === Number(input.value)) {
+  if (guguResult === Number(guguInput.value)) {
     resultDiv.textContent = "정답!"
     firstNum = RANDOM_NUM1
     secondNum = RANDOM_NUM2
-    result = firstNum * secondNum
-    word.textContent = `${firstNum} 곱하기 ${secondNum} 는?`
-    input.value = ""
-    input.focus()
+    guguResult = firstNum * secondNum
+    guguWord.textContent = `${firstNum} 곱하기 ${secondNum} 는?`
+    guguInput.value = ""
+    guguInput.focus()
   } else {
     resultDiv.textContent = "땡!"
-    input.value = ""
-    input.focus()
+    guguInput.value = ""
+    guguInput.focus()
   }
 })
