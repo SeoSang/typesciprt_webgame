@@ -140,3 +140,16 @@ forEach([1, 2, 3], n => console.log(n))
 forEach(["a", "b", "c"], str => console.log(str))
 
 // Array<T> == T[]  ,  Array <(T extends S)> == (T extend S)[]
+
+// import {Action} from 'redux' 가능
+
+// <reference types="symbol-observable" />
+// -> 이거의 tpye을 참조하고있다.
+// -> 다른 패키지의 type을 참조할 때 쓴다.
+
+// definitelyTyped => 엄청 나게 많은 타입들이 있다. 가져다 쓰면 됨.
+
+// export = jQuery  => import * as J from 'jQuery'
+//                  => import J = require('jQuery)
+
+// nmaespace 덕에 React.Component 이런식으로 가능

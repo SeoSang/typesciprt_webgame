@@ -9,6 +9,7 @@
   "author": "Seo",
   "license": "ISC",
   "dependencies": {
+    "redux": "^4.0.5",
     "typescript": "^3.7.5"
   }
 }
