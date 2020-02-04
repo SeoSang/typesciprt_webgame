@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+#root {
+  height: 100%;
+  position: relative;
+}
+
+.main {
+  color: black;
+  margin-top: 30px;
+}
+
+.selectGame {
+  text-decoration: none;
+  color: black;
+  background-color: #1aab8a;
+  padding: 1%;
+  border-radius: 12px;
+}
+.gameTitle {
+  background-color: #dff9fb;
+  text-align: middle;
+  border-radius: 50px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3),
+    0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+.gameButton {
+  background: #1aab8a;
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 40px;
+  font-size: 1em;
+  padding: 0 1em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+.gameButton:hover {
+  background: #fff;
+  color: #1aab8a;
+}
+.gameButton:before,
+.gameButton:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #1aab8a;
+  transition: 400ms ease all;
+}
+.gameButton:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.gameButton:hover:before,
+.gameButton:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}

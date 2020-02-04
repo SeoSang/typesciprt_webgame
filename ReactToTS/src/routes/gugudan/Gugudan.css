@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Jua&display=swap");
+
+body {
+  background-color: #c7ecee;
+  text-align: center;
+  height: 100vh;
+  font-family: "Jua";
+}
+
+.gugudanTitle {
+  background-color: #dff9fb;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: middle;
+  border-radius: 50px;
+  padding: 3vh 3vw;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3),
+    0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+.gugudanTitle h1 {
+  text-align: center;
+  font-size: 7.5vmin;
+  margin: 0;
+}
+
+.gugudan {
+  right: 25%;
+  background-color: #dff9fb;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  position: absolute;
+  transform: translateY(-50%);
+  padding: 1% 3% 1% 3%;
+  border-radius: 10px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3),
+    0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  top: 55%;
+}
+
+.gugudan__question {
+  font-size: 6vmin;
+  position: relative;
+}
+
+.gugudan__feildset {
+  padding-left: 0;
+  padding-right: 0;
+  border-color: aquamarine;
+  border-radius: 1px;
+}
+
+.gugudan__form {
+  margin-bottom: 1%;
+}
+
+.gugudan__form label {
+  display: inline-block;
+  border-radius: 5px;
+  margin: 0.2rem 0.5rem 0rem 0rem;
+  font-size: 4vmin;
+}
+
+.gugudan__form button {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  line-height: 3.5vmin;
+  transform: translateY(-50%);
+}
+
+.gugudan__ansInput {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  border-radius: 3px;
+  background-color: aliceblue;
+  text-decoration: none;
+  color: black;
+  margin-right: 0.3rem;
+  font: 500 3vmin "Jua";
+  text-indent: 0.3rem;
+  background-origin: padding-box;
+}

@@ -1,0 +1,16 @@
+table {
+  border-collapse: collapse;
+  margin: 10vmin auto;
+  height: 60vmin;
+}
+td {
+  border: 3px solid black;
+  width: 20vmin;
+  text-align: center;
+  font-size: 2rem;
+}
+
+tr {
+  /* width: 10%;
+  height: 10%; */
+}

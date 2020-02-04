@@ -1,0 +1,26 @@
+.navigator_ul a {
+  text-decoration: none;
+  color: #130f40;
+}
+
+.navigator_ul li {
+  display: inline-block;
+  margin: 0 2%;
+  text-decoration: none;
+  background-color: chartreuse;
+  border-radius: 12px;
+  padding: 1%;
+}
+
+.btn-home {
+  text-decoration: none;
+  color: #130f40;
+  margin: 0 2%;
+  text-decoration: none;
+  background-color: rgb(230, 255, 162);
+  border-radius: 12px;
+  padding: 1%;
+  position: absolute;
+  top: 0.6%;
+  right: 21%;
+}

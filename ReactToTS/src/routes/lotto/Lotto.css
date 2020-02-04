@@ -1,0 +1,13 @@
+.lotto-ballContainer {
+  display: inline-block;
+  width: 100%;
+  margin: 4% 0;
+}
+
+.lotto-title {
+  margin-top: 2%;
+  display: inline-block;
+  width: 20%;
+  padding: 1% 0;
+  font-size: 3vmin;
+}
