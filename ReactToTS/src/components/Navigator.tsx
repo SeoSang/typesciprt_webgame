@@ -1,9 +1,14 @@
-import React from "react"
+import * as React from "react"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 import "./Navigator.css"
 
-const gameArr = [
+interface GameInfo {
+  title: string
+  link: string
+}
+
+const gameArr: GameInfo[] = [
   { title: "구구단", link: "/game/gugudan" },
   { title: "끝말잇기", link: "/game/wordrelay" },
   { title: "숫자야구", link: "/game/numberbaseball" },

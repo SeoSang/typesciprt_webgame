@@ -26,7 +26,7 @@ module.exports = {
     ]
   },
 
-  plugins: [new webpack.LoaderOptionsPlugin({ debug: true })],
+  plugins: [],
 
   output: {
     path: path.join(__dirname, "dist"),
