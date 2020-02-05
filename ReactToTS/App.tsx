@@ -1,9 +1,9 @@
 import * as React from "react"
 import { BrowserRouter, HashRouter, Route, Switch, Link } from "react-router-dom"
-import Home from "./Home.jsx"
-import Footer from "./src/components/Footer.jsx"
-import Navigator from "./src/components/Navigator.jsx"
-import GameSelecting from "./src/components/GameSelecting.jsx"
+import Home from "./Home"
+import Footer from "./src/components/Footer"
+import Navigator from "./src/components/Navigator"
+import GameSelecting from "./src/components/GameSelecting"
 import "./App.css"
 
 const App = () => {

@@ -7,7 +7,7 @@ module.exports = {
   mode: "development", // 배포할 때는 production
   devtool: "eval", // 배포할 때는 hidden-source-map
   resolve: {
-    extensions: [".js", "jsx", ".tsx", ".ts"]
+    extensions: [".js", ".jsx", ".tsx", ".ts"]
   },
   entry: {
     app: ["./client"]
@@ -18,6 +18,14 @@ module.exports = {
         test: /\.tsx?$/,
         loader: "awesome-typescript-loader",
         options: {}
+      },
+      {
+        test: /\.jsx?$/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: ["@babel/plugin-proposal-class-properties", "react-hot-loader/babel"]
+        }
       },
       {
         test: /\.css?$/,

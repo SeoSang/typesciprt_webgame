@@ -2,8 +2,10 @@
   "compilerOptions": {
     "strict": true,
     "lib": ["ES5", "ES2015", "ES2016", "ES2017", "DOM"],
-    "jsx": "react"
-    // "skipLibCheck": true
+    "jsx": "react",
+    "allowJs": true,
+    "sourceMap": true,
+    "skipLibCheck": true // 이거는 d.ts 도 체크할지
     // "esModuleInterop": true  이거 켜면 import 그대로 쓰는거 가능
   },
   "exclude": ["node_modules"]

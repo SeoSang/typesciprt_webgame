@@ -1,5 +1,7 @@
-import React, { useState, createRef } from "react"
-import Try from "./Try.jsx"
+import * as React from "react"
+const { useState, createRef } = React
+import Try from "./Try"
+import { TryInfo } from "../../../types"
 
 // 임의의 4자리 다 다른 숫자 받아오기 (문자열 배열)
 const getRandomNumbers = () => {
@@ -12,7 +14,7 @@ const getRandomNumbers = () => {
   return randomNum
 }
 
-const duplicateCheck = n => {
+const duplicateCheck = (n: string) => {
   if (n.slice(1, 4).includes(n[0])) return false
   if (n.slice(2, 4).includes(n[1]) || n[1] === n[0]) return false
   if (n.slice(0, 2).includes(n[2]) || n[2] === n[3]) return false
@@ -24,9 +26,9 @@ const NumberBaseball = () => {
   const [result, setResult] = useState("")
   const [value, setValue] = useState("")
   const [answer, setAnswer] = useState(getRandomNumbers())
-  const [tries, setTries] = useState([])
+  const [tries, setTries] = useState<TryInfo[]>([])
 
-  const onSubmitForm = e => {
+  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // 정답일 경우
     if (value.length !== 4 || isNaN(+value)) {
@@ -62,7 +64,6 @@ const NumberBaseball = () => {
             ball += 1
           }
         }
-        1, 2, 5
         setResult(`${strike} strike and ${ball} ball`)
         const RESULT = `${strike} strike and ${ball} ball`
         setTries([...tries, { try: value, result: RESULT }])
@@ -73,15 +74,16 @@ const NumberBaseball = () => {
     inputFocus()
   }
 
-  const onChangeInput = e => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     setValue(e.target.value)
   }
 
-  let valueInput = createRef()
+  let valueInput = createRef<HTMLInputElement>()
 
   const inputFocus = () => {
-    valueInput.current.focus()
+    if (valueInput.current !== null) valueInput.current.focus()
+    console.log("TCL: inputFocus -> valueInput", valueInput)
   }
 
   return (
