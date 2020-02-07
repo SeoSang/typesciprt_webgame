@@ -1,12 +1,13 @@
-import React, { Component, useState, useRef, useEffect, useMemo, useCallback } from "react"
-import Ball from "./Ball.jsx"
+import * as React from "react"
+import { useState, useRef, useEffect, useMemo } from "react"
+import Ball from "./Ball"
 import "./Lotto.css"
 
 function getWinNumbers() {
   console.log("getWinNumbers")
   const BONUS_INDEX = 7
   const candidate = Array(45)
-    .fill()
+    .fill(null)
     .map((v, i) => i + 1)
   const shuffle = []
   while (candidate.length > 0) {
@@ -20,16 +21,16 @@ function getWinNumbers() {
 const Lotto = () => {
   const lottoNums = useMemo(() => getWinNumbers(), [])
   const [winNums, setWinNums] = useState(lottoNums)
-  const [winBalls, setWinBalls] = useState([])
-  const [bonus, setBonus] = useState(null)
+  const [winBalls, setWinBalls] = useState<number[]>([])
+  const [bonus, setBonus] = useState<number>(0)
 
-  const timeoutIDs = useRef([])
-  const bonusTimeoutID = useRef()
+  const timeoutIDs = useRef<number[]>([])
+  const bonusTimeoutID = useRef<number>()
 
   const refresh = () => {
     setWinNums(getWinNumbers())
     setWinBalls([])
-    setBonus(null)
+    setBonus(0)
     timeoutIDs.current.forEach(v => {
       clearTimeout(v)
     })
@@ -52,6 +53,8 @@ const Lotto = () => {
 
   useEffect(() => {
     showBalls()
+
+    // 컴포넌트 없어질 때 지워주기 (ComponentWillUnmount)
     return () => {
       timeoutIDs.current.forEach(v => {
         clearTimeout(v)
@@ -67,14 +70,14 @@ const Lotto = () => {
       </div>
       <div className="lotto-ballContainer">
         {winBalls.map((nums, i) => (
-          <Ball key={`${i}번째 공`} number={nums}></Ball>
+          <Ball key={`${i}번째 공`} ballNum={nums}></Ball>
         ))}
       </div>
       <div>
         <div className="gameTitle lotto-title">보너스번호</div>
       </div>
       <div className="lotto-ballContainer">
-        {bonus == null ? null : <Ball key="bonus 공" number={bonus}></Ball>}
+        {bonus == null ? null : <Ball key="bonus 공" ballNum={bonus}></Ball>}
       </div>
       <button className="gameButton" onClick={showBalls}>
         다시뽑기

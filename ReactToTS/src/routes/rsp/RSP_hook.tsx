@@ -1,53 +1,42 @@
-import React, { useState, useRef, useEffect, memo } from "react"
+import * as React from "react"
+import { useState, useRef, useEffect, memo } from "react"
+import { GameTitleDiv, BigTitle1 } from "../../components/style/game"
 import "./RSP.css"
-
-// constructor -> render -> ref -> DidMount
-// (setState / Props 바뀜) -> shouldComponentUpdate render -> componentDidUpdate
-// 부모가 나를 없앰 => componentWillUnmount -> 소멸
 
 const rspCoords = {
   r: "0",
   s: "-142px",
   p: "-284px"
-}
+} as const
 
 const scoreObj = {
   r: 1,
   s: 0,
   p: -1
-}
+} as const
 
-const comChoice = img => {
-  return Object.entries(rspCoords).find(arr => {
+type rsp = typeof rspCoords
+type rsp_key = keyof rsp
+type imgCoords = typeof rspCoords[keyof rsp]
+
+const comChoice = (img: imgCoords) => {
+  return (Object.keys(rspCoords) as [rsp_key]).find(arr => {
     return arr[1] === img
-  })[0]
+  })!
 }
 
 const RSP = () => {
   const [score, setScore] = useState(0)
-  const [imgCoord, setImgCoord] = useState(rspCoords.r)
+  const [imgCoord, setImgCoord] = useState<imgCoords>(rspCoords.r)
   const [result, setResult] = useState()
-  const intervalID = useRef(0)
-  const prev_intervalID = useRef()
-  const timeoutID = useRef()
-
-  //   // 첫 렌더 수행 후 (주로 비동기요청 실행)
-  //   componentDidMount() {
-  //     this.intervalID = setInterval(this.changeRSC, 70)
-  //   }
-
-  //   // 컴포넌트 리렌더링 된 후  (props가 바뀌거나 setstate 된 후)
-  //   componentDidUpdate() {}
-
-  //   // 컴포넌트 제거되기 직전 (비동기 요청 정리)
-  //   componentWillUnmount() {}
-
-  // useLayoutEffect()  -> 화면이 바뀌기 전에 화면이 바뀌었나 확인
+  const intervalID = useRef<number>(0)
+  const prev_intervalID = useRef<number>(0)
+  const timeoutID = useRef<number>(0)
 
   useEffect(() => {
     intervalID.current = setInterval(changeRSC, 70)
     return () => {
-      clearInterval(intervalID.current)
+      clearInterval(intervalID.current!)
     }
   }, [imgCoord])
 
@@ -61,7 +50,7 @@ const RSP = () => {
     }
   }
 
-  const onClickBtn = choice => () => {
+  const onClickBtn = (choice: rsp_key) => () => {
     // 인자가 있으므로 고차함수로 줘야댐
     if (intervalID.current === prev_intervalID.current) return // 무한클릭 방지
     prev_intervalID.current = intervalID.current
@@ -87,20 +76,17 @@ const RSP = () => {
 
   return (
     <>
+      <GameTitleDiv>
+        <BigTitle1>가위바위보</BigTitle1>
+      </GameTitleDiv>
       <div
         id="rsc-computer"
         style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0` }}
       ></div>
       <div id="rsc-me">
-        <button className="rsc__btn" onClick={onClickBtn("r")}>
-          바위
-        </button>
-        <button className="rsc__btn" onClick={onClickBtn("s")}>
-          가위
-        </button>
-        <button className="rsc__btn" onClick={onClickBtn("p")}>
-          보자기
-        </button>
+        <button onClick={onClickBtn("r")}>바위</button>
+        <button onClick={onClickBtn("s")}>가위</button>
+        <button onClick={onClickBtn("p")}>보자기</button>
       </div>
       <div id="rsc-result">{result}</div>
       <div id="rsc-score">
