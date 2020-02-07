@@ -4,14 +4,6 @@ import { SmallTitle } from "../../components/style/game"
 import { Screen } from "../../../types"
 const { useState, useRef } = React
 
-const FastClickScreen = styled.div`
-  margin: 5% 0;
-  background: color;
-  display: "inline-block";
-  width: "60%";
-  height: "40%";
-`
-
 const RANDOM_TIME = 2000
 const WAIT_TIME = 2000
 const WAITING: Screen = {
@@ -44,13 +36,21 @@ function FastClick() {
   const startTime = useRef<Date | undefined>()
   const endTime = useRef<Date | undefined>() // useRef 들은 변해도 렌더링이 안됨
 
+  const FastClickScreen = styled.div`
+    margin: 5% 0;
+    background: ${color};
+    display: inline-block;
+    width: 60%;
+    height: 40%;
+  `
+
   const setAllState = (nextScreen: Screen) => {
     setColor(nextScreen.color)
     setText(nextScreen.text)
     setState(nextScreen.state)
   }
 
-  interface HandleScreenChangeInterface extends React.MouseEvent {
+  interface HandleScreenChangeInterface extends React.MouseEvent<HTMLDivElement, MouseEvent> {
     target: HTMLDivElement
   }
   const handelClickedScreen = (e: HandleScreenChangeInterface) => {
@@ -79,9 +79,9 @@ function FastClick() {
         console.table(endTime.current, startTime.current)
       }
     }
+    console.log(e)
     e.target.style.color = color
     e.target.children[0].textContent = text
-    e.target.children[0].textContent
   }
   //   setTimeout(colorChange, msTime)
 
@@ -90,8 +90,10 @@ function FastClick() {
       <div>
         <SmallTitle>스피드 게임</SmallTitle>
       </div>
-      <FastClickScreen onClick={handelClickedScreen} style={{}}>
-        <h2 style={{ color: "#f5f6fa" }}>{text}</h2>
+      <FastClickScreen onClick={handelClickedScreen}>
+        <div onClick={handelClickedScreen}>
+          <h2 style={{ color: "#f5f6fa" }}>{text}</h2>
+        </div>
       </FastClickScreen>
       {resultTime === 0 ? null : (
         <div>

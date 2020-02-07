@@ -10,7 +10,6 @@ import Home from "../../Home"
 
 class GameSelecting extends Component {
   render() {
-    console.log(this.props)
     switch (this.props.match.params.name) {
       case "numberbaseball":
         return <NumberBaseball />
