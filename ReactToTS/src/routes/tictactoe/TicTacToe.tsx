@@ -128,27 +128,24 @@ function TicTacToe() {
     if (win) {
       // 이겼을 때
       dispatch(setResult(`${turn}님의 승리!` as UseReducerState["result"]))
-      setIsPlaying(false)
-      console.log("TICTACTOE 에서 ISPlaying", isPlaying)
     } else {
-      setIsPlaying(false)
+      let playing = false
       tableData.forEach(row => {
         row.forEach(cell => {
           if (!cell) {
-            setIsPlaying(true)
+            playing = true
           }
         })
       })
-      if (!isPlaying) {
+      if (!playing) {
         // 비겼을 때
         dispatch({ type: SET_RESULT, result: "무승부!" })
-        setIsPlaying(false)
       } else {
         // 계속 진행
         dispatch({ type: CHANGE_TURN })
       }
     }
-  }, [recentCell, isPlaying])
+  }, [recentCell])
 
   const onClickTable = useCallback(() => {}, [])
 
@@ -161,7 +158,7 @@ function TicTacToe() {
         result={result}
         isPlaying={isPlaying}
       ></Table>
-      {!isPlaying && (
+      {result && (
         <div>
           <div>{result}</div>
           <button onClick={resetGame}>게임 다시하기</button>

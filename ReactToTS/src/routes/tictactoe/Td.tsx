@@ -30,9 +30,9 @@ const Td: React.FC<Props> = ({ cellIndex, rowIndex, cellData, result, dispatch, 
 
   const onClickTd = useCallback(() => {
     console.log("TCL: onClickTd -> isPlaying", isPlaying)
-    if (cellData || !isPlaying) return
+    if (cellData || result) return
     dispatch(clickCell(rowIndex, cellIndex))
-  }, [cellData, isPlaying])
+  }, [cellData, result])
   return <td onClick={onClickTd}>{cellData}</td>
 }
 

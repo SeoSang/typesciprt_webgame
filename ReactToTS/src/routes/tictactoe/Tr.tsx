@@ -18,24 +18,19 @@ const Tr: React.FC<Props> = ({ rowData, rowIndex, result, dispatch, isPlaying })
     <tr>
       {Array(rowData.length)
         .fill("")
-        .map((tr, i) =>
-          React.useMemo(
-            () => (
-              <Td
-                key={`${rowIndex} 번째 열 ${i}번째 행`}
-                cellIndex={i}
-                rowIndex={rowIndex}
-                cellData={rowData[i]}
-                result={result}
-                dispatch={dispatch}
-                isPlaying={isPlaying}
-              >
-                {rowData[i]}
-              </Td>
-            ),
-            [rowData],
-          ),
-        )}
+        .map((tr, i) => (
+          <Td
+            key={`${rowIndex} 번째 열 ${i}번째 행`}
+            cellIndex={i}
+            rowIndex={rowIndex}
+            cellData={rowData[i]}
+            result={result}
+            dispatch={dispatch}
+            isPlaying={isPlaying}
+          >
+            {rowData[i]}
+          </Td>
+        ))}
     </tr>
   )
 }

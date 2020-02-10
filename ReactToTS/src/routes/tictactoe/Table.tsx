@@ -16,21 +16,16 @@ const Table: React.FC<Props> = ({ isPlaying, onClick, tableData, result, dispatc
     <table onClick={onClick}>
       {Array(tableData.length)
         .fill(0)
-        .map((tr, i) =>
-          useMemo(
-            () => (
-              <Tr
-                key={`${i}번째 열`}
-                rowIndex={i}
-                rowData={tableData[i]}
-                result={result}
-                dispatch={dispatch}
-                isPlaying={isPlaying}
-              />
-            ),
-            tableData[i],
-          ),
-        )}
+        .map((tr, i) => (
+          <Tr
+            key={`${i}번째 열`}
+            rowIndex={i}
+            rowData={tableData[i]}
+            result={result}
+            dispatch={dispatch}
+            isPlaying={isPlaying}
+          />
+        ))}
     </table>
   )
 }
